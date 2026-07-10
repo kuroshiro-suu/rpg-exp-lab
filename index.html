@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RPG EXP Lab</title>
+
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#f7f7f2" />
+</head>
+
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="appTitle">RPG EXP Lab</div>
+      <div class="subTitle">経験値カーブ・ステージ別EXP目安</div>
+    </section>
+
+    <section class="card">
+      <h2>基本設定</h2>
+
+      <label>
+        <span>ゲーム名</span>
+        <input id="gameName" type="text" value="灰の門の迷宮" />
+      </label>
+
+      <div class="grid2">
+        <label>
+          <span>最大Lv</span>
+          <input id="maxLevel" type="number" value="99" min="2" />
+        </label>
+
+        <label>
+          <span>Lv1→2必要EXP</span>
+          <input id="baseExp" type="number" value="40" min="1" />
+        </label>
+      </div>
+
+      <div class="grid2">
+        <label>
+          <span>必要EXP増加率</span>
+          <input id="growthRate" type="number" value="1.12" step="0.01" />
+        </label>
+
+        <label>
+          <span>プラス係数</span>
+          <input id="plusCoef" type="number" value="5" step="1" />
+        </label>
+      </div>
+
+      <div class="grid2">
+        <label>
+          <span>増加率停止Lv</span>
+          <input id="growthStopLevel" type="number" value="50" min="1" />
+        </label>
+
+        <label>
+          <span>プラス係数停止Lv</span>
+          <input id="plusStopLevel" type="number" value="50" min="1" />
+        </label>
+      </div>
+
+      <div class="grid2">
+        <label>
+          <span>丸め単位</span>
+          <select id="roundUnit">
+            <option value="1">1</option>
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </label>
+
+        <label>
+          <span>ステージ数</span>
+          <input id="stageCount" type="number" value="7" min="1" max="30" />
+        </label>
+      </div>
+
+      <div class="buttonRow">
+        <button id="makeStagesButton">ステージ欄を作成</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>ステージ設定</h2>
+      <div id="stageInputs" class="stageInputs"></div>
+    </section>
+
+    <section class="card">
+      <h2>操作</h2>
+      <div class="buttonGrid">
+        <button id="calcButton" class="primary">計算</button>
+        <button id="saveButton">保存</button>
+        <button id="loadButton">ロード</button>
+        <button id="resetButton">初期値</button>
+        <button id="copyCsvButton">CSVコピー</button>
+      </div>
+      <div id="message" class="message"></div>
+    </section>
+
+    <section class="card">
+      <h2>ステージ別まとめ</h2>
+      <div id="stageSummary" class="stageSummary"></div>
+    </section>
+
+    <section class="card">
+      <h2>Lv詳細</h2>
+      <div class="legend">Lv / 次 / 累 / St</div>
+      <div id="levelList" class="levelList"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
