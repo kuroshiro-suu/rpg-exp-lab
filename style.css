@@ -76,6 +76,15 @@ select {
   color: #222;
 }
 
+input::placeholder {
+  color: #c9c9c2;
+  opacity: 1;
+}
+
+select:has(option[value=""]:checked) {
+  color: #bdbdb6;
+}
+
 input:focus,
 select:focus {
   outline: 2px solid #222;
@@ -198,8 +207,8 @@ button:active {
 
 .levelRow {
   display: grid;
-  grid-template-columns: 64px 80px 1fr 44px;
-  gap: 8px;
+  grid-template-columns: 58px 92px 128px 40px;
+  gap: 10px;
   align-items: center;
   padding: 10px 0;
   border-top: 1px solid #eee;
@@ -215,14 +224,15 @@ button:active {
 }
 
 .levelRow .num {
-  text-align: left;
+  text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
 .levelRow .stage {
-  text-align: left;
+  text-align: right;
   color: #666;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .message {
@@ -293,8 +303,8 @@ button:active {
   }
 
   .levelRow {
-    grid-template-columns: 54px 70px 1fr 38px;
-    gap: 6px;
+    grid-template-columns: 52px 82px 112px 34px;
+    gap: 7px;
     font-size: 0.9rem;
   }
 
