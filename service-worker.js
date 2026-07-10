@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "rpg-exp-lab-v2";
+const CACHE_NAME = "rpg-exp-lab-v3";
 
 const FILES_TO_CACHE = [
   "./",
