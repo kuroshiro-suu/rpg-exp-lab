@@ -147,10 +147,10 @@ function readSettingsFromForm(strict) {
     const startInput = document.getElementById(`stageStart_${i}`);
     const battlesInput = document.getElementById(`stageBattles_${i}`);
 
-    settings.stages.push({
-      startLevel: toIntOrNull(startInput?.value),
-      battles: toIntOrNull(battlesInput?.value)
-    });
+   settings.stages.push({
+  startLevel: i === 1 ? 1 : toIntOrNull(startInput?.value),
+  battles: toIntOrNull(battlesInput?.value)
+});
   }
 
   if (strict) {
@@ -224,19 +224,22 @@ function renderStageInputs(settings) {
     const card = document.createElement("div");
     card.className = "stageInputCard";
 
-    card.innerHTML = `
-      <div class="stageInputTitle">ステージ${i}</div>
-      <div class="grid2">
-        <label>
-          <span>開始Lv</span>
-          <input id="stageStart_${i}" type="number" value="${stage.startLevel ?? ""}" min="1" placeholder="${i === 1 ? "1" : ""}" />
-        </label>
-        <label>
-          <span>戦闘数</span>
-          <input id="stageBattles_${i}" type="number" value="${stage.battles ?? ""}" min="0" placeholder="${40 + (i - 1) * 5}" />
-        </label>
-      </div>
-    `;
+   const startLevelValue = i === 1 ? 1 : (stage.startLevel ?? "");
+const startLevelExtra = i === 1 ? "readonly aria-readonly=\"true\"" : "";
+
+card.innerHTML = `
+  <div class="stageInputTitle">ステージ${i}</div>
+  <div class="grid2">
+    <label>
+      <span>開始Lv${i === 1 ? "（固定）" : ""}</span>
+      <input id="stageStart_${i}" type="number" value="${startLevelValue}" min="1" placeholder="${i === 1 ? "1" : ""}" ${startLevelExtra} />
+    </label>
+    <label>
+      <span>戦闘数</span>
+      <input id="stageBattles_${i}" type="number" value="${stage.battles ?? ""}" min="0" placeholder="${40 + (i - 1) * 5}" />
+    </label>
+  </div>
+`;
 
     els.stageInputs.appendChild(card);
   }
